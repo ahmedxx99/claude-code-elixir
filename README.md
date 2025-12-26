@@ -19,8 +19,17 @@ claude plugins install mix-format@claude-code-elixir
 
 ## Prerequisites
 
-- Elixir and Erlang (`brew install elixir`)
-- elixir-ls for LSP (`brew install elixir-ls`)
+**macOS:**
+```bash
+brew install elixir elixir-ls
+```
+
+**Windows:**
+```powershell
+choco install elixir elixir-ls
+```
+
+> **Note:** The `mix-format` plugin requires a bash environment (Git Bash, WSL). The `elixir-lsp` plugin works natively on Windows.
 
 ## Plugins
 
