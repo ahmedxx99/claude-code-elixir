@@ -1,6 +1,6 @@
 {
   "name": "mix-format",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Auto-format Elixir files with mix format after edits",
   "author": {
     "name": "George Guimaraes"
