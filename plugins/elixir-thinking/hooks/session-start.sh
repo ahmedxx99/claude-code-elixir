@@ -4,6 +4,20 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
+# Only inject context if this is an Elixir project (mix.exs exists)
+if [ ! -f "mix.exs" ]; then
+    # Not an Elixir project, output empty response
+    cat <<EOF
+{
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": ""
+  }
+}
+EOF
+    exit 0
+fi
+
 # Read the using-elixir-skills SKILL.md
 skill_content=$(cat "${PLUGIN_ROOT}/skills/using-elixir-skills/SKILL.md" 2>&1 || echo "Error reading skill")
 
@@ -32,7 +46,7 @@ cat <<EOF
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "<ELIXIR_THINKING>\n${skill_escaped}\n</ELIXIR_THINKING>"
+    "additionalContext": "<EXTREMELY_IMPORTANT>\n${skill_escaped}\n</EXTREMELY_IMPORTANT>"
   }
 }
 EOF

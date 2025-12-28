@@ -70,7 +70,7 @@ Covers:
 - GenStateMachine for explicit state machines with timeouts
 - Supervision strategies: one_for_one, one_for_all, rest_for_one
 - DynamicSupervisor for dynamic children, PartitionSupervisor for scaling
-- Task.Supervisor.async is THE recommended pattern (not raw Task.async)
+- Task.Supervisor for production (async_nolink for error handling, graceful shutdown)
 - Registry + DynamicSupervisor pattern for named dynamic processes
 - Distributed OTP: Horde, :pg for cluster-wide process groups
 - Broadway vs Oban: external queues vs background jobs (different problems)
@@ -106,7 +106,7 @@ These thoughts mean STOP—you're rationalizing:
 | "GenServer is the Elixir way" | GenServer is a bottleneck by design. Read the skill. |
 | "I'll query in mount, it's cleaner" | mount is called twice. Read the skill. |
 | "I don't need contexts for this" | Contexts are about meaning, not size. Read the skill. |
-| "Task.async is simpler" | Task.Supervisor.async is THE pattern. Read the skill. |
+| "Task.async is simpler" | Fine for experiments; use Task.Supervisor for async_nolink and production. |
 | "I'll figure it out as I go" | Elixir rewards upfront design. Read the skill first. |
 | "This is obvious" | If it were obvious, these skills wouldn't exist. |
 
