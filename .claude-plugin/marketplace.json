@@ -11,19 +11,23 @@
   "plugins": [
     {
       "name": "elixir-lsp",
-      "source": "./plugins/elixir-lsp"
+      "source": "./plugins/elixir-lsp",
+      "description": "Elixir Language Server integration for Claude Code"
     },
     {
       "name": "elixir-thinking",
-      "source": "./plugins/elixir-thinking"
+      "source": "./plugins/elixir-thinking",
+      "description": "Paradigm-shifting skills for Elixir, Phoenix, and OTP development"
     },
     {
       "name": "mix-compile",
-      "source": "./plugins/mix-compile"
+      "source": "./plugins/mix-compile",
+      "description": "Run mix compile --warnings-as-errors after editing Elixir files"
     },
     {
       "name": "mix-format",
-      "source": "./plugins/mix-format"
+      "source": "./plugins/mix-format",
+      "description": "Auto-format Elixir files with mix format after edits"
     }
   ]
 }
