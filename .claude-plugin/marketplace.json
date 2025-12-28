@@ -32,6 +32,10 @@
     {
       "name": "otp-thinking",
       "source": "./plugins/otp-thinking"
+    },
+    {
+      "name": "elixir-skill-awareness",
+      "source": "./plugins/elixir-skill-awareness"
     }
   ]
 }

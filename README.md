@@ -16,7 +16,8 @@ claude plugin install mix-format@claude-code-elixir && \
 claude plugin install mix-compile@claude-code-elixir && \
 claude plugin install elixir-architectural-thinking@claude-code-elixir && \
 claude plugin install phoenix-ecto-thinking@claude-code-elixir && \
-claude plugin install otp-thinking@claude-code-elixir
+claude plugin install otp-thinking@claude-code-elixir && \
+claude plugin install elixir-skill-awareness@claude-code-elixir
 ```
 
 ## Prerequisites
@@ -39,9 +40,10 @@ claude plugin install otp-thinking@claude-code-elixir
 | [elixir-lsp](#elixir-lsp) | LSP | Language Server with completions, go-to-definition, Dialyzer |
 | [mix-format](#mix-format) | Hook | Auto-format `.ex`/`.exs` files on save |
 | [mix-compile](#mix-compile) | Hook | Compile with `--warnings-as-errors` on save |
-| [elixir-architectural-thinking](#elixir-architectural-thinking) | Skill | BEAM/process mental models |
+| [elixir-architectural-thinking](#elixir-architectural-thinking) | Skill | BEAM/process mental models, testing strategies |
 | [phoenix-ecto-thinking](#phoenix-ecto-thinking) | Skill | Phoenix Scopes, Contexts, LiveView patterns |
 | [otp-thinking](#otp-thinking) | Skill | GenServer, supervision, ETS patterns |
+| [elixir-skill-awareness](#elixir-skill-awareness) | Hook | Auto-suggests skills when working on Elixir code |
 
 ---
 
@@ -154,6 +156,16 @@ OTP design patterns and when to use each abstraction.
 - [Stephen Bussey - Real-Time Phoenix](https://pragprog.com/titles/sbsockets/real-time-phoenix/)
 
 </details>
+
+---
+
+### Automation
+
+#### elixir-skill-awareness
+
+Injects context at session start so Claude automatically considers Elixir skills when working on Elixir code.
+
+When installed, Claude will check if `elixir-architectural-thinking`, `phoenix-ecto-thinking`, or `otp-thinking` apply before writing code, based on trigger phrases like "design", "GenServer", "LiveView", "context", etc.
 
 ---
 
