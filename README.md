@@ -14,7 +14,7 @@ Install all plugins:
 claude plugin install elixir-lsp@claude-code-elixir && \
 claude plugin install mix-format@claude-code-elixir && \
 claude plugin install mix-compile@claude-code-elixir && \
-claude plugin install elixir-thinking@claude-code-elixir
+claude plugin install elixir@claude-code-elixir
 ```
 
 ## Prerequisites
@@ -37,7 +37,7 @@ claude plugin install elixir-thinking@claude-code-elixir
 | [elixir-lsp](#elixir-lsp) | LSP | Language Server with completions, go-to-definition, Dialyzer |
 | [mix-format](#mix-format) | Hook | Auto-format `.ex`/`.exs` files on save |
 | [mix-compile](#mix-compile) | Hook | Compile with `--warnings-as-errors` on save |
-| [elixir-thinking](#elixir-thinking) | Skills | BEAM architecture, Phoenix/Ecto, OTP patterns |
+| [elixir](#elixir) | Skills | BEAM architecture, Phoenix, Ecto, OTP patterns |
 
 ---
 
@@ -83,7 +83,7 @@ Auto-runs `mix compile --warnings-as-errors` after editing `.ex` files.
 
 ### Skills
 
-#### elixir-thinking
+#### elixir
 
 Paradigm-shifting skills for Elixir, Phoenix, and OTP development. Includes a SessionStart hook that auto-suggests skills when working on Elixir code.
 
@@ -91,11 +91,12 @@ Paradigm-shifting skills for Elixir, Phoenix, and OTP development. Includes a Se
 
 | Skill | Use When |
 |-------|----------|
-| `elixir-architectural-thinking` | Designing modules, processes, data structures |
-| `phoenix-ecto-thinking` | Working with Phoenix, LiveView, Ecto, contexts |
+| `elixir-thinking` | Designing modules, processes, data structures |
+| `phoenix-thinking` | Working with Phoenix, LiveView, PubSub |
+| `ecto-thinking` | Working with Ecto, contexts, schemas |
 | `otp-thinking` | Implementing GenServers, supervisors, Tasks |
 
-##### elixir-architectural-thinking
+##### elixir-thinking
 
 Mental models for writing Elixir — how it differs from OOP.
 
@@ -118,22 +119,42 @@ Mental models for writing Elixir — how it differs from OOP.
 
 </details>
 
-##### phoenix-ecto-thinking
+##### phoenix-thinking
 
-Architectural patterns for Phoenix and Ecto.
+Architectural patterns for Phoenix and LiveView.
 
 | Concept | Insight |
 |---------|---------|
 | **Iron Law** | NO DATABASE QUERIES IN MOUNT |
 | Scopes (1.8+) | Security-first authorization threading |
 | mount vs handle_params | mount = setup, handle_params = data |
-| Contexts | Bounded domains with their own "dialect" |
-| Cross-context refs | Use IDs, not `belongs_to` associations |
+| PubSub | Scoped topics, `broadcast_from` to avoid self-broadcast |
+| Channel fastlane | Socket state can be stale — re-fetch or include in broadcast |
 
 <details>
 <summary>Sources</summary>
 
 - [Phoenix 1.8 Scopes](https://hexdocs.pm/phoenix/scopes.html)
+- [Phoenix LiveView Docs](https://hexdocs.pm/phoenix_live_view)
+- [Stephen Bussey - Real-Time Phoenix](https://pragprog.com/titles/sbsockets/real-time-phoenix/)
+
+</details>
+
+##### ecto-thinking
+
+Architectural patterns for Ecto and contexts.
+
+| Concept | Insight |
+|---------|---------|
+| Contexts | Bounded domains with their own "dialect" |
+| Cross-context refs | Use IDs, not `belongs_to` associations |
+| Schemas | Multiple changesets per schema, `embedded_schema` for forms |
+| Preloads | Separate vs join — pick based on data shape |
+| pool_count vs pool_size | pool_count = DBConnection pools, pool_size = connections per pool |
+
+<details>
+<summary>Sources</summary>
+
 - [Phoenix Contexts Guide](https://hexdocs.pm/phoenix/contexts.html)
 - [German Velasco - DDD for Phoenix Contexts](https://www.youtube.com/watch?v=mSgZ2LJXfew) (ElixirConf 2024)
 - [Ecto Multi-Tenancy Guide](https://hexdocs.pm/ecto/multi-tenancy-with-query-prefixes.html)
