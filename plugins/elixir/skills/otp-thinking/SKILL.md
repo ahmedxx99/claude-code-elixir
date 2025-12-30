@@ -113,6 +113,16 @@ Need state?
 :sys.trace(pid, true)      # Trace events (TURN OFF when done!)
 ```
 
+## Telemetry Is Built Into Everything
+
+Phoenix, Ecto, and most libraries emit telemetry events. Attach handlers:
+
+```elixir
+:telemetry.attach("my-handler", [:phoenix, :endpoint, :stop], &handle/4, nil)
+```
+
+Use `Telemetry.Metrics` + reporters (StatsD, Prometheus, LiveDashboard).
+
 ## Red Flags - STOP and Reconsider
 
 - GenServer wrapping stateless computation
