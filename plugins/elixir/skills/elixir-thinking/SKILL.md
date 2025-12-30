@@ -206,6 +206,36 @@ end
 
 **The rule:** If you need `async: false`, you've coupled to global state. Fix the coupling, not the test.
 
+## Inline Config Defaults
+
+Don't create helper functions to merge config defaults. Inline the fallback directly:
+
+```elixir
+# WRONG: Unnecessary indirection
+defp merge_defaults(opts) do
+  Keyword.merge([repo: Application.get_env(:app, :repo), llm: Application.get_env(:app, :llm)], opts)
+end
+
+def some_function(opts) do
+  opts = merge_defaults(opts)
+  repo = Keyword.get(opts, :repo)
+  # ...
+end
+
+# RIGHT: Explicit about which keys each function uses
+def some_function(opts) do
+  repo = opts[:repo] || Application.get_env(:app, :repo)
+  llm = opts[:llm] || Application.get_env(:app, :llm)
+  # ...
+end
+```
+
+**Why inline is better:**
+- Explicit about which keys each function actually uses
+- Avoids merging config keys that aren't needed
+- One less layer of indirection
+- Easier to trace where defaults come from
+
 ## The Layer Architecture
 
 Design order:
