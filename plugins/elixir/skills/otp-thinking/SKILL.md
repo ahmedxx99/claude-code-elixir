@@ -22,6 +22,17 @@ A GenServer processes ONE message at a time. Before creating one, ask:
 
 **No exceptions:** Don't wrap stateless functions in GenServer. Don't create GenServer "for organization".
 
+## GenServer Patterns
+
+| Function | Use For |
+|----------|---------|
+| `call/3` | Synchronous requests expecting replies |
+| `cast/2` | Fire-and-forget messages |
+
+**When in doubt, use `call`** to ensure back-pressure. Set appropriate timeouts for `call/3`.
+
+Use `handle_continue/2` for post-init work—keeps `init/1` fast and non-blocking.
+
 ## Task.Supervisor, Not Task.async
 
 `Task.async` spawns a **linked** process—if task crashes, caller crashes too.
@@ -78,6 +89,8 @@ Broadway is NOT a job queue.
 | :one_for_one | Independent |
 | :one_for_all | Interdependent (all restart) |
 | :rest_for_one | Sequential dependency |
+
+Use `:max_restarts` and `:max_seconds` to prevent restart loops.
 
 Think about failure cascades BEFORE coding.
 

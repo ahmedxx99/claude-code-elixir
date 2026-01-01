@@ -40,11 +40,19 @@ The truth: Supervisors START processes.
 - Handle expected errors explicitly (`{:ok, _}` / `{:error, _}`)
 - Let unexpected errors crash → supervisor restarts
 
-## Rule of Least Expressiveness
+## Control Flow
 
-Use the simplest abstraction: pattern matching → anonymous functions → behaviors → protocols → message passing. Each step adds complexity.
+**Pattern matching first:**
+- Match on function heads instead of `if/else` or `case` in bodies
+- `%{}` matches ANY map—use `map_size(map) == 0` guard for empty maps
+- Avoid nested `case`—refactor to single `case`, `with`, or separate functions
 
-## Three Polymorphism Mechanisms
+**Error handling:**
+- Use `{:ok, result}` / `{:error, reason}` for operations that can fail
+- Avoid raising exceptions for control flow
+- Use `with` for chaining `{:ok, _}` / `{:error, _}` operations
+
+## Polymorphism
 
 | For Polymorphism Over... | Use | Contract |
 |--------------------------|-----|----------|
@@ -55,6 +63,11 @@ Use the simplest abstraction: pattern matching → anonymous functions → behav
 **Behaviors** = default for module polymorphism (very cheap at runtime)
 **Protocols** = only when composing data types, especially built-ins
 **Message passing** = only when stateful by design (IO, file handles)
+
+Use the simplest abstraction: pattern matching → anonymous functions → behaviors → protocols → message passing. Each step adds complexity.
+
+**When justified:** Library extensibility, multiple implementations, test swapping.
+**When to stay coupled:** Internal module, single implementation, pattern matching handles all cases.
 
 ## Data Modeling Replaces Class Hierarchies
 
@@ -69,39 +82,7 @@ def interpret({:sequence, left, right}, input), do: ...
 def interpret({:repeat, pattern}, input), do: ...
 ```
 
-## Decoupling Is Not Self-Serving
-
-**When justified:** Library extensibility, multiple implementations, test swapping.
-**When to stay coupled:** Internal module, single implementation, pattern matching handles all cases.
-
-## Testing
-
-**Test behavior, not implementation.** Test use cases / public API. Refactoring shouldn't break tests.
-
-**Keep tests async.** `async: false` means you've coupled to global state. Fix the coupling:
-
-| Problem | Solution |
-|---------|----------|
-| `Application.put_env` | Pass config as function argument |
-| Feature flags | Inject via process dictionary or context |
-| ETS tables | Create per-test tables with unique names |
-| External APIs | Use Mox with explicit allowances |
-
-## Inline Config Defaults
-
-Don't create helper functions to merge config defaults. Inline the fallback:
-
-```elixir
-# WRONG: Unnecessary indirection
-defp merge_defaults(opts), do: Keyword.merge([repo: Application.get_env(:app, :repo)], opts)
-
-# RIGHT: Explicit about which keys each function uses
-def some_function(opts) do
-  repo = opts[:repo] || Application.get_env(:app, :repo)
-end
-```
-
-## Use Default Values, Not Nil Checks
+## Defaults and Options
 
 Use `/3` variants (`Keyword.get/3`, `Map.get/3`) instead of case statements branching on `nil`:
 
@@ -115,6 +96,39 @@ end
 # RIGHT
 Keyword.get(opts, :chunker, :default) |> parse_chunker_config()
 ```
+
+Don't create helper functions to merge config defaults. Inline the fallback:
+
+```elixir
+# WRONG
+defp merge_defaults(opts), do: Keyword.merge([repo: Application.get_env(:app, :repo)], opts)
+
+# RIGHT
+def some_function(opts) do
+  repo = opts[:repo] || Application.get_env(:app, :repo)
+end
+```
+
+## Idioms
+
+- Process dictionary is typically unidiomatic—pass state explicitly
+- Reserve `is_thing` names for guards only
+- Use structs over maps when shape is known: `defstruct [:name, :age]`
+- Prepend to lists `[new | list]` not `list ++ [new]`
+- Use `dbg/1` for debugging—prints formatted value with context
+
+## Testing
+
+**Test behavior, not implementation.** Test use cases / public API. Refactoring shouldn't break tests.
+
+**Keep tests async.** `async: false` means you've coupled to global state. Fix the coupling:
+
+| Problem | Solution |
+|---------|----------|
+| `Application.put_env` | Pass config as function argument |
+| Feature flags | Inject via process dictionary or context |
+| ETS tables | Create per-test tables with unique names |
+| External APIs | Use Mox with explicit allowances |
 
 ## Common Rationalizations
 
