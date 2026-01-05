@@ -125,6 +125,11 @@ Note: Doesn't work for `through` associations.
 Ecto.Migrator.run(Repo, [{0, Migration1}, {1, Migration2}], :up, opts)
 ```
 
+## Idioms
+
+- Prefer `Repo.insert/1` over `Repo.insert!/1`—handle `{:ok, _}` / `{:error, _}` explicitly
+- Use `Repo.transact/1` (Ecto 3.12+) for simple transactions instead of `Ecto.Multi`
+
 ## Red Flags - STOP and Reconsider
 
 - belongs_to pointing to another context's schema

@@ -64,6 +64,16 @@ Unscoped topics = data leaks between tenants.
 - **LiveComponents:** Own state, handle own events
 - **LiveViews:** Full page, owns URL, top-level state
 
+## Async Data Loading
+
+Use `assign_async/3` for data that can load after mount:
+
+```elixir
+def mount(_params, _session, socket) do
+  {:ok, assign_async(socket, :user, fn -> {:ok, %{user: fetch_user()}} end)}
+end
+```
+
 ## Gotchas from Core Team
 
 ### LiveView terminate/2 Requires trap_exit
@@ -103,7 +113,7 @@ To verify webhook signatures, you need the raw body. But Plug.Parsers consumes i
 ```elixir
 {:ok, body, conn} = Plug.Conn.read_body(conn)
 verify_signature!(conn, body)
-%{conn | body_params: Jason.decode!(body)}
+%{conn | body_params: JSON.decode!(body)}
 ```
 
 Don't use `preserve_req_body: true`—it keeps the entire body in memory for ALL requests.
