@@ -122,6 +122,8 @@ end
 
 **Test behavior, not implementation.** Test use cases / public API. Refactoring shouldn't break tests.
 
+**Test your code, not the framework.** If deleting your code doesn't fail the test, it's tautological.
+
 **Keep tests async.** `async: false` means you've coupled to global state. Fix the coupling:
 
 | Problem | Solution |
