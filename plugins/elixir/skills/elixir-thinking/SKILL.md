@@ -116,6 +116,7 @@ end
 - Use structs over maps when shape is known: `defstruct [:name, :age]`
 - Prepend to lists `[new | list]` not `list ++ [new]`
 - Use `dbg/1` for debugging—prints formatted value with context
+- Use built-in `JSON` module (Elixir 1.18+) instead of Jason
 
 ## Testing
 
