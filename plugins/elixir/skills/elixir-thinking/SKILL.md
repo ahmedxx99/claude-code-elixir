@@ -1,6 +1,6 @@
 ---
 name: elixir-thinking
-description: Use when writing Elixir code. Contains paradigm-shifting insights about processes, polymorphism, and the BEAM runtime that differ from OOP thinking.
+description: This skill should be used when the user asks to "implement a feature in Elixir", "refactor this module", "should I use a GenServer here?", "how should I structure this?", "use the pipe operator", "add error handling", "make this concurrent", or mentions protocols, behaviours, pattern matching, with statements, comprehensions, structs, or coming from an OOP background. Contains paradigm-shifting insights.
 ---
 
 # Elixir Thinking

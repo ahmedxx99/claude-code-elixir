@@ -1,6 +1,6 @@
 ---
 name: using-elixir-skills
-description: Use when writing Elixir, Phoenix, or OTP code - routes to the correct thinking skill before any code is written
+description: This skill should be used when the user works on any .ex or .exs file, mentions Elixir/Phoenix/Ecto/OTP, the project has a mix.exs, or asks "which skill should I use", "new to Elixir", "help with Elixir". Routes to the correct thinking skill BEFORE exploring code. Triggers on "implement", "add", "fix", "refactor" in Elixir projects.
 ---
 
 <EXTREMELY-IMPORTANT>

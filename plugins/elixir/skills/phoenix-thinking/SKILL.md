@@ -1,6 +1,6 @@
 ---
 name: phoenix-thinking
-description: Use when writing Phoenix, LiveView, or Plug code. Contains insights about LiveView lifecycle, Scopes, PubSub, and gotchas from Chris McCord.
+description: This skill should be used when the user asks to "add a LiveView page", "create a form", "handle real-time updates", "broadcast changes to users", "add a new route", "create an API endpoint", "fix this LiveView bug", "why is mount called twice?", or mentions handle_event, handle_info, handle_params, mount, channels, controllers, components, assigns, sockets, or PubSub. Essential for avoiding duplicate queries in mount.
 ---
 
 # Phoenix Thinking

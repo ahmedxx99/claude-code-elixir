@@ -1,6 +1,6 @@
 ---
 name: ecto-thinking
-description: Use when writing Ecto code. Contains insights about Contexts, DDD patterns, schemas, changesets, and database gotchas from José Valim.
+description: This skill should be used when the user asks to "add a database table", "create a new context", "query the database", "add a field to a schema", "validate form input", "fix N+1 queries", "preload this association", "separate these concerns", or mentions Repo, changesets, migrations, Ecto.Multi, has_many, belongs_to, transactions, query composition, or how contexts should talk to each other.
 ---
 
 # Ecto Thinking
