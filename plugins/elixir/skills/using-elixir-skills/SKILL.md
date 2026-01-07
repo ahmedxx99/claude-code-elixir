@@ -24,7 +24,8 @@ Elixir/Phoenix/OTP task → Invoke skill FIRST → Then explore/research → The
 | code, implement, write, design, architecture, structure, pattern | `elixir-thinking` |
 | LiveView, Plug, PubSub, mount, channel, socket, component | `phoenix-thinking` |
 | context, schema, Ecto, changeset, preload, Repo, migration | `ecto-thinking` |
-| GenServer, supervisor, Task, ETS, bottleneck, Broadway, Oban | `otp-thinking` |
+| GenServer, supervisor, Task, ETS, bottleneck, Broadway | `otp-thinking` |
+| Oban, workflow, job queue, cascade, graft, background job, async job | `oban-thinking` |
 
 ## Red Flags
 
