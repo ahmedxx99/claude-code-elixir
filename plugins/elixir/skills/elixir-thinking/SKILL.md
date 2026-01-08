@@ -52,6 +52,22 @@ The truth: Supervisors START processes.
 - Avoid raising exceptions for control flow
 - Use `with` for chaining `{:ok, _}` / `{:error, _}` operations
 
+**Be explicit about expected cases:**
+- Avoid `_ -> nil` catch-alls—they silently swallow unexpected cases
+- Avoid `value && value.field` nil-punning—obscures actual return types
+- When a case has `{:ok, nil} -> nil` alongside `{:ok, value} -> value.field`, use `with` instead:
+
+```elixir
+# Verbose
+case get_run(id) do
+  {:ok, nil} -> nil
+  {:ok, run} -> run.recommendations
+end
+
+# Prefer
+with {:ok, %{recommendations: recs}} <- get_run(id), do: recs
+```
+
 ## Polymorphism
 
 | For Polymorphism Over... | Use | Contract |
